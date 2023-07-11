@@ -1,6 +1,7 @@
-Ancy Thomas - Willdan Interview
-Hello, and thank you for taking the time to interview me today!
-(https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/WilldanLogo.png)
+#Ancy Thomas - Willdan Interview
+
+##Hello, and thank you for taking the time to interview me today!
+![WilldanLogo.png](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/WilldanLogo.png)
 
 
 
@@ -9,10 +10,10 @@ Hello, and thank you for taking the time to interview me today!
 
 
 
-You can view a copy of my resume [HERE](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Ancy_Thomas_Resume.pdf)
+###You can view a copy of my resume [HERE](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Ancy_Thomas_Resume.pdf)
 
-Project 1
-Database Management
+##Project 1
+###Database Management
 
 In this bootcamp project, I deployed a container set and managed the database. 
 
@@ -59,11 +60,11 @@ In this bootcamp project, I deployed a container set and managed the database.
     INSERT INTO employees (firstname, lastname, email, department)  
     VALUES ('Fran', 'Frappucino', 'ffrappucino@goodcorp.net', 'Finance');
     ```
-![InsertQuery] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/InsertQuery.png)
+![InsertQuery.png] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/InsertQuery.png)
 7. Created a modified `SELECT` query to find all employees in the Research and Development department.
 
       `SELECT * FROM employees WHERE Department = 'Research and Development';`
-![SelectQuery] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/SelectQuery.png)
+![SelectQuery.png] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/SelectQuery.png)
 
 8. Created a `DELETE` query to remove the entry for Andrew:
 
@@ -74,7 +75,7 @@ In this bootcamp project, I deployed a container set and managed the database.
     - Then re-run the `SELECT *` query to see the new `employees` table:
 
 1       `SELECT * FROM employees;`
-![DeleteQuery] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/DeleteQuery.png)
+![DeleteQuery.png] (https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/DeleteQuery.png)
    
 
       
