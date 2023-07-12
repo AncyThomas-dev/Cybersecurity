@@ -11,7 +11,6 @@
 
 
 ### You can view a copy of my resume [HERE](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Ancy_Thomas_Resume.pdf)
-### You can view a copy of my resume [HERE](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Ancy_Thomas_Resume.pdf)
 
 ## Project 1
 
@@ -19,7 +18,7 @@
 
 ## Project 2
 
-### [Database Management mini project] (https://github.com/AncyThomas-dev/WilldanInterview/tree/main/Database%20Management)
+### [Database Management mini project](https://github.com/AncyThomas-dev/WilldanInterview/tree/main/Database%20Management)
 
 ## Project 3
 
