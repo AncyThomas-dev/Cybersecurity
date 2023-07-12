@@ -31,8 +31,6 @@ $newStorageAcctParams = @{Name = 'purpleteamstorage' ; ResourceGroupName = 'Purp
 }
 $storageAccount = New-AzStorageAccount @newStorageAcctParams
 
-
-
 $newPublicIpParams = @{Name = 'MyNIC' ; ResourceGroupName = 'PurpleTeamRG' ; AllocationMethod  = 'Dynamic' ; DomainNameLabel   = 'test-domain' ; Location = 'Eastus2' }
 
 $publicIp = New-AzPublicIpAddress @newPublicIpParams
@@ -63,6 +61,7 @@ New-AzVM -VM $vm -ResourceGroupName PurpleTeamRG -Location Eastus2
 
 ```
 
+![](https://github.com/AncyThomas-dev/WilldanInterview/tree/main/Powershell/Images)
 
 
 
