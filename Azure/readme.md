@@ -8,11 +8,11 @@ I used the following steps to set up cloud resources in Azure
 
 Used the Azure portal to create a resource group that will contain everything the Purple Team needs in the cloud.
 
-- On the home screen, search for "resource."
+- On the home screen, searched for "resource."
 
-- Click on the **+ Create** button or the **Create resource group** button.
+- Clicked on the **+ Create** button or the **Create resource group** button.
 
-- Click on **Review + create**.
+- Clicked on **Review + create**.
 
     ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/AzureResourceGroup.png)
 
@@ -76,7 +76,7 @@ The goal of the previous step was to set up the first virtual machines inside th
 
 SSH Key Generation
 
-Opened the command line and run `ssh-keygen` to create a new SSH key pair.
+Opened the command line and ran `ssh-keygen` to create a new SSH key pair.
     
 Ran `cat ~/.ssh/id_rsa.pub` to display my `id_rsa.pub` key:
 
@@ -88,11 +88,11 @@ Ran `cat ~/.ssh/id_rsa.pub` to display my `id_rsa.pub` key:
 
 Use the following settings for this VM: 
 
-- Resource group: Chose the same resource group that you created for the Purple Team.
+- Resource group: Chose the same resource group that I created for the Purple Team.
 
 - Virtual machine name: "Jump-Box-Provisioner."
 
-- Region: Used the same region that you used for your other resources.
+- Region: Used the same region that I used for other resources.
 
 - Image: Chose the Ubuntu Server 18.04 option.
 
@@ -107,7 +107,7 @@ For SSH, I used the following settings:
 
 - Username: PurpleTeamUser.
 
-- SSH public key: Pasted the public key string that you copied earlier.
+- SSH public key: Pasted the public key string that I copied earlier.
 
 
  **Networking** tab:
@@ -124,14 +124,14 @@ For SSH, I used the following settings:
 
     ![](1/Images/VM/VMNetworking-b.png)
 
-- Click on **Review + create**.
+- Clicked on **Review + create**.
 
     ![](1/Images/VM/FinalizeVM.png)
 
 
 #### VM's 2 and 3 - Web VM's
 
-Create 2 more new VMs named - "Web-1" and "Web-2".
+Created 2 more new VMs named - "Web-1" and "Web-2".
 
 - These VM's are in the same resource group I used for all other resources.
 
@@ -176,7 +176,7 @@ The goal of this step is to create a security group rule to allow SSH connection
 
 1. Created a security group rule to allow SSH connections from my current IP address.
 
-2. Create a rule allowing SSH connections from my IP address. 
+2. Created a rule allowing SSH connections from my IP address. 
 
 	![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/SSHInboundRule.png)
 
@@ -193,7 +193,7 @@ The goal of this step is to create a security group rule to allow SSH connection
 
 The goal of this step is to configure the jump box to run Docker containers and to install a container.
 
-1. Started by installing `docker.io` on your Jump box.
+1. Started by installing `docker.io` on the Jump box.
 
     - Ran `sudo apt update` then `sudo apt install docker.io`
     
@@ -278,7 +278,7 @@ The goal here is to create an Ansible playbook that installed Docker and configu
 
 1. Connected to the jump box, and connected to the Ansible container in the box. 
 
-2. Created a YAML playbook file that you will use for your configuration. 
+2. Created a YAML playbook file that I will use for the configuration. 
 
     ```YAML
     ---
@@ -351,7 +351,7 @@ I installed a load balancer in front of the VM to distribute the traffic among m
 1. Created a load balancing rule to forward port `80` from the load balancer to the Purple Team VNet.
 
 
-2. Create a new security group rule to allow port `80` traffic from the internet to your internal VNet.
+2. Created a new security group rule to allow port `80` traffic from the internet to the internal VNet.
 
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/LBSecurityRules.png)
 
