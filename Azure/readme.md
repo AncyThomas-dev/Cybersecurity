@@ -2,6 +2,19 @@
 
 I used the following steps to set up cloud resources in Azure
 
+#### Resources created:
+
+- Resource Group
+- Virtual Network
+- Network Security Group
+- 3 Virtual Machines
+- Installed Ansible and Docker in the VMs
+- Load Balancer
+- Web app
+- WAF rules
+
+![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/ResourceGroupFinal.png)
+
 ---
 
 #### Setting up the Resource Group
