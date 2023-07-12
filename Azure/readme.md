@@ -14,101 +14,55 @@ Used the Azure portal to create a resource group that will contain everything th
 
 - Click on **Review + create**.
 
-- Azure will alert you if there are any errors. Click on **Create** to finalize your settings and create the group.
-
     ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/AzureResourceGroup.png)
 
 ---
 
 #### Setting up the VNet
 
-Before you can deploy servers and services, there must be a network where these items can be accessed.
+I setup a virtual network where the rsource group items can be accessed.
 
 - This network should have the capacity to hold any resource that the Purple Team needs, now and in the future.
 
-- Return to the home screen and search for "net." Choose the search result for **Virtual networks**.
-
-- Click on the **+ Create** button on the top-left of the page or the **Create virtual network** button on the bottom of the page.
-
-
-Fill in the network settings:
-
-- Subscription
-
-- Resource group: This should be the resource group you created in step two.
-
-- Name: A descriptive name so it will not get confused with other cloud networks in the same account.
-
-- Region: Make sure to choose the same region you chose for your resource group. 
-
-    - Carefully configuring the region of your resources is important for ensuring low latency and high availability. Resources should be located as close as possible to those who will be consuming them.
-
-- IP Addresses: Azure requires you to define a network and subnet.
-    - Use the defaults on this tab.
-
-- Security: Leave the default settings.
-
-- Tags: No tags are needed.
-
-Click **Create**.
-
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/AzureVirtualNetwork.png)
-
-Once you have created your resource group and VNet, return to the home screen and choose the resource group option. 
-- This provides a list of all resource groups in your account. 
-- Choose the group that you created and you should see your VNet listed as a resource. 
 
 ![](1/Activities/04_Virtual_Networking/Solved/Images/virtual_net/final_resource_group.png)
 
-You now have a resource group and VNet that you can use to create the rest of the cloud infrastructure.
+I now have a resource group and VNet that I can use to create the rest of the cloud infrastructure.
 ---
 
 #### Setting up a Network Security Group:
 
-- On your Azure portal home screen, search "net" and choose **Network security groups**. 
+Steps:
 
-- Create a new security group.
+- Created a new security group.
 
-- Add this security group to your resource group.
+- Added this security group to the resource group.
 
-- Give the group a recognizable name that is easy to remember.
-
-- Make sure the security group is in the same region that you chose during the previous activity.
-
-To create an inbound rule to block all traffic:
-
-- Once the security group is created, click on the group to configure it.
-
-- Choose **Inbound security rules** on the left.
-
-- Click on the **+ Add** button to add a rule.
+Created an inbound rule to block all traffic:
 
 
-Configure the inbound rule as follows:
+Configured the inbound rule as follows:
 
-- Source: Choose **Any** source to block all traffic.
+- Source: Chose **Any** source to block all traffic.
 
-- Source port ranges: Source ports are always random, even with common services like HTTP. Therefore,keep the wildcard (*) to match all source ports.
+- Source port ranges: Source ports are always random, even with common services like HTTP. Therefore,kept the wildcard (*) to match all source ports.
 
 - Destination: Select **Any** to block any and all traffic associated with this security group.
 
 - Service: Select **Custom**
 
-- Destination port ranges: Usually, you would specify a specific port or a range of ports for the destination. In this case, you can use the wildcard (*) to block all destination ports. You can also block all ports using a range like `0-65535`.
+- Destination port ranges: I used the wildcard (*) to block all destination ports. 
 
 - Protocol: Block **Any** protocol that is used.
 
-- Action: Use the **Block** action to stop all of the traffic that matches this rule.
+- Action: Used the **Block** action to stop all of the traffic that matches this rule.
 
-- Priority: This rule will always be the last rule, so it should have the highest possible number for the priority. Other rules will always come before this rule. The highest number Azure allows is 4,096.
+- Priority: This rule will always be the last rule, so I gave it the highest possible number for the priority. Other rules will always come before this rule. The highest number Azure allows is 4,096.
 
-- Name: Give your rule a name like "Default-Deny."
 
 ![](1/Images/inbound_rule_settings1.png)
 
-- Description: "Deny all inbound traffic."
-
-- Save the rule.
 
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/PurpleTeamSG.png)
 
@@ -116,76 +70,57 @@ I now have a VNet protected by a network security group that blocks all traffic.
 
 #### Setting up Virtual Machines
 
-The goal of the previous step was to set up the first virtual machines inside the cloud network, which is protected by the network security group. I will use this machine as a jump box to access your cloud network and any other machines inside the VNet.
+The goal of the previous step was to set up the first virtual machines inside the cloud network, which is protected by the network security group. I will use this machine as a jump box to access my cloud network and any other machines inside the VNet.
 
 ---
 
 SSH Key Generation
 
-Open the command line and run `ssh-keygen` to create a new SSH key pair.
-    - DO NOT CREATE A PASSPHRASE, just press enter twice.
-Run `cat ~/.ssh/id_rsa.pub` to display your `id_rsa.pub` key:
+Opened the command line and run `ssh-keygen` to create a new SSH key pair.
+    
+Ran `cat ~/.ssh/id_rsa.pub` to display my `id_rsa.pub` key:
 
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/SSH.png)
 
 
-- Highlight and copy the SSH key string to your clipboard. 
-
----
-
 #### VM 1 - Jump-Box
-
-Open the Azure portal and search for "virtual machines."
-
-- Use the **+ Add** button or the **Create virtual machine** button to create a new VM.
 
 
 Use the following settings for this VM: 
 
-- Resource group: Choose the same resource group that you created for the Purple Team.
+- Resource group: Chose the same resource group that you created for the Purple Team.
 
-- Virtual machine name: Use the name "Jump Box Provisioner."
+- Virtual machine name: "Jump-Box-Provisioner."
 
-- Region: Use the same region that you used for your other resources.
-	- Note that availability of VM's in Azure could cause you to change the region where your VM's are created.
-
-- Availability options: We will use this setting for other machines. For our jump box, we will leave this on the default setting.
+- Region: Used the same region that you used for your other resources.
 
 - Image: Chose the Ubuntu Server 18.04 option.
 
 - Chose the VM option that has:
-  - Whose offering is **Standard - B1s**
+  -  **Standard - B1s**
   - 1 CPU
   - 1 RAM
 
-For SSH, use the following settings: 
+For SSH, I used the following settings: 
 
 - Authentication type: SSH public key.
 
-- Username: Create any username you like.
+- Username: PurpleTeamUser.
 
-- SSH public key: Paste the public key string that you copied earlier.
-
-- Public inbound ports: Ignore this setting. It will be overwritten when you choose your security group.
-
-- Select inbound ports: Ignore this setting. It will be overwritten when you choose your security group.
-
-Move to the **Networking** tab and set the following settings:
-
-- Virtual network: Choose the VNet you created for the Purple Team.
-
-- Subnet: Choose the subnet that you created earlier.
-
-- Public IP: This can be kept as default. 
-
-- NIC network security group: Choose the Advanced option so we can specify our custom security group.
-
-- Configure network security group: Choose your Purple Team network security group.
-
-- Accelerated networking: Keep as the default setting (Off).
+- SSH public key: Pasted the public key string that you copied earlier.
 
 
-- Load balancing: Keep as the default setting (None).
+ **Networking** tab:
+
+- Virtual network: Chose the VNet I created for the Purple Team.
+
+- Subnet: Choose the subnet that I created earlier.
+
+- Public IP:  default. 
+
+- NIC network security group: Chose the Advanced option so I could specify my custom security group.
+
+- Configure network security group: Chose my Purple Team network security group.
 
     ![](1/Images/VM/VMNetworking-b.png)
 
@@ -193,102 +128,64 @@ Move to the **Networking** tab and set the following settings:
 
     ![](1/Images/VM/FinalizeVM.png)
 
-- Finalize all your settings and create the VM by clicking on the **Create** button.
 
 #### VM's 2 and 3 - Web VM's
 
-Create 2 more new VMs. Keep the following in mind when configuring these VM's:
-- Each VM should be named "Web-1" and "Web-2"
+Create 2 more new VMs named - "Web-1" and "Web-2".
 
-- These VM's need to be in the same resource group you are using for all other resources.
+- These VM's are in the same resource group I used for all other resources.
 
-- The VM's should be located in the same region as your resource group and security group.
-	- Note that availability of VM's in Azure could cause you to change the region where your VM's are created.
-	- The goal is to create 3 machines in the same resource group attached to the same security group. If you cannot add 3 machines to the resource group and security group that you have, a new resource group and security group may need to be created in another region.
+- The VM's are located in the same region as my resource group and security group.
 
-- The administrative username should make sense for this scenario. You should use the same admin name for all 3 machines. Make sure to take a note of this name as you will need it to login later.
-
-- **SSH Key:** Later in the lab setup, we will overwrite these SSH keys. For now, use the SSH key that you created in the first VM setup.
-    - Run: `cat ~/.ssh/id_rsa.pub` and copy the key.
-
-- Choose the VM option that has:
+- Chose the VM option that has:
   - Whose offering is **Standard - B1ms**
   - 1 CPU
   - 2 RAM
 
-**Note:** These web machines should have _2 GB_ of RAM and the Jump-Box only needs _1 GB_. All 3 machines should only have _1 vCPU_ because the free Azure account only allows _4 vCPU's_ in total per region.
 
-**VERY IMPORTANT:** Make sure both of these VM's are in the same availability Set. Machines that are not in the same availability set cannot be added to the same load balancer later, and will have to be deleted and recreated in the same availability set.  
-- Under Availability Options, select 'Availability Set'. Click on 'Create New' under the Availability set. Give it an appropriate name. After creating it on the first VM, choose it for the second VM.
+Both of these VM's are in the same availability Set. 
 
 ![](1/Images/Avail_Set/Avail-Set.png)
 
-In the **Networking** tab and set the following settings:
+In the **Networking** tab I set the following settings:
 
-- Virtual network: Choose the VNet you created for the Purple Team.
+- Virtual network: Chose the VNet that I created for the Purple Team.
 
-- Subnet: Choose the subnet that you created earlier.
+- Subnet: Chose the subnet that I created earlier.
 
-- Public IP: NONE! Make sure these web VM's do not have a public IP address.
+- Public IP: NONE! 
 
 ![](1/Images/Avail_Set/No-Ip.png)
 
-- NIC network security group: Choose the Advanced option so we can specify our custom security group.
+- NIC network security group: Chose the Advanced option so that I can specify my custom security group.
 
-- Configure network security group: Choose your Purple Team network security group.
+- Configure network security group: Chose the Purple Team network security group.
 
-- Load balancing: Keep as the default setting (No).
-
-**NOTE:** Notice that these machines will not be accessible at this time because our security group is blocking all traffic. We will configure access to these machines later.
+- Load balancing: No.
 
 Final Web VM-1
 
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/VM's.png)
 
-#### Setting up your Jump Box Administration
+#### Setting up Jump Box Administration
 
-The goal of this step is to create a security group rule to allow SSH connections only from your current IP address, and to connect to your new virtual machine for management.
+The goal of this step is to create a security group rule to allow SSH connections only from my current IP address, and to connect to the new virtual machine for management.
 
 ---
 
 
-1. Create a security group rule to allow SSH connections from your current IP address.
+1. Created a security group rule to allow SSH connections from my current IP address.
 
-2. Create a rule allowing SSH connections from your IP address. 
-
-    - Choose **Inbound security rules** on the left.
-
-    - Click **+ Add** to add a rule.
-
-        - Source: Use the **IP Addresses** setting, with your IP address in the field.
-
-        - Source port ranges: Set to **Any** or '*' here.
-            - Destination: This can be set **VirtualNetwork** but a better setting is to specify the internal IP of your jump box to really limit this traffic.
-
-        - Service: This can be set to **SSH**
-
-        - Destination port ranges: Since we chose SSH, it will default to `22`.
-
-        - Protocol: This will default to **TCP**.
-
-        - Action: Set to **Allow** traffic.
-
-        - Priority: less than 4096
-
-        - Name: Name this rule anything you like
-
-        - Description: Write a short description similar to: "Allow SSH from my IP." 
-
+2. Create a rule allowing SSH connections from my IP address. 
 
 	![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/SSHInboundRule.png)
 
 
-4. Used the command line to SSH to the VM for administration. Windows users should use GitBash.
+4. Used the command line to SSH to the VM for administration. 
 
     - The command to connect is `ssh admin-username@VM-public-IP`.
 
-    
-   ![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/SSHKey.png)
+       ![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/SSHKey.png)
 
 ---
 
@@ -296,19 +193,19 @@ The goal of this step is to create a security group rule to allow SSH connection
 
 The goal of this step is to configure the jump box to run Docker containers and to install a container.
 
-1. Start by installing `docker.io` on your Jump box.
+1. Started by installing `docker.io` on your Jump box.
 
-    - Run `sudo apt update` then `sudo apt install docker.io`
+    - Ran `sudo apt update` then `sudo apt install docker.io`
     
-2. Verify that the Docker service is running.
+2. Verified that the Docker service is running.
 
-    - Run `sudo systemctl status docker`
+    - Ran `sudo systemctl status docker`
 
     ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/DockerInstall.png)
 
-3. Once Docker is installed, pulled the container `cyberxsecurity/ansible`.
+3. Once Docker is installed, I pulled the container `cyberxsecurity/ansible`.
 
-    - Run `sudo docker pull cyberxsecurity/ansible`.
+    - Ran `sudo docker pull cyberxsecurity/ansible`.
 
 ![]( https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/Ansible.png)
 
@@ -316,48 +213,23 @@ The goal of this step is to configure the jump box to run Docker containers and 
    
 ![](2/Images/Docker_Ansible/Container_Connected.png)
 
-4. Create a new security group rule that allows your jump box machine full access to your VNet.
-
-    - Get the private IP address of your jump box.
-
-    - Go to your security group settings and create an inbound rule. Create rules allowing SSH connections from your IP address.
-
-       - Source: Use the **IP Addresses** setting with your jump box's internal IP address in the field.
-
-        - Source port ranges: **Any** or * can be listed here.
-
-        - Destination: Set to **VirtualNetwork**.
-
-        - Service: Select **SSH**
-
-        - Destination port ranges: This will default to port `22`.
-
-        - Protocol: This will default to **TCP**.
-
-        - Action: Set to **Allow** traffic from your jump box.
-
-        - Priority: Priority must be a lower number than your rule to deny all traffic.
-
-        - Name: Name this rule anything you like.
-        - Description: Write a short description similar to: "Allow SSH from the jump box IP."
-
+4. Created a new security group rule that allows the jump box machine full access to the VNet.
 
 ---
 
-#### Setup your Provisioner
+#### Setup the Provisioner
 
 In this step, I launched a new VM from the Azure portal that could only be accessed using a new SSH key from the container running inside the jump box.
 
-1. Connect to the Ansible container. Once connected, I created a new SSH key and copy the public key.
+1. Connected to the Ansible container. Once connected, I created a new SSH key and copied the public key.
 
     - Ran `docker run -it cyberxsecurity/ansible /bin/bash` to start the container and connect to it. 
      ```
-
     - Ran `ls .ssh/` to view the keys.
 
     - Ran `cat .ssh/id_rsa.pub` to display the public key.
 
-    - Copy the public key string.
+    - Copied the public key string.
 
 2. Returned to the Azure portal and located one of the web-vm's details page.
 
@@ -365,7 +237,7 @@ In this step, I launched a new VM from the Azure portal that could only be acces
 
     - Got the internal IP for the new VM from the Details page.
 
-3. After the VM launches, tested your connection using `ssh` from the jump box Ansible container. 
+3. After the VM launched, tested my connection using `ssh` from the jump box Ansible container. 
 
 ![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/sshintoweb1.png)
 
@@ -375,9 +247,9 @@ In this step, I launched a new VM from the Azure portal that could only be acces
    ```
      - Added the web VM internal IP addresses to the Ansible hosts file.
 
-    - Open the file with `nano /etc/ansible/hosts`.
-    - Uncomment the `[webservers]` header line.
-    - Add the internal IP address under the `[webservers]` header.
+    - Opened the file with `nano /etc/ansible/hosts`.
+    - Uncommented the `[webservers]` header line.
+    - Added the internal IP address under the `[webservers]` header.
 		- Add the python line: `ansible_python_interpreter=/usr/bin/python3` besides each IP.
 
 ![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure/Images/Azure%20Resource%20Group/editwebservers.png)
