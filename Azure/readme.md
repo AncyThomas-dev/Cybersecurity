@@ -278,9 +278,6 @@ The goal here is to create an Ansible playbook that installed Docker and configu
 
 1. Connected to the jump box, and connected to the Ansible container in the box. 
 
-    
-    ```
-
 2. Created a YAML playbook file that you will use for your configuration. 
 
     ```YAML
