@@ -45,11 +45,11 @@ In this bootcamp project, I deployed a container set and managed the database.
     INSERT INTO employees (firstname, lastname, email, department)  
     VALUES ('Fran', 'Frappucino', 'ffrappucino@goodcorp.net', 'Finance');
     ```
-![InsertQuery.png](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/InsertQuery.png)
+![InsertQuery.png](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/SQL/InsertQuery.png)
 7. Created a modified `SELECT` query to find all employees in the Research and Development department.
 
       `SELECT * FROM employees WHERE Department = 'Research and Development';`
-![SelectQuery.png](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/SelectQuery.png)
+![SelectQuery.png](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/SQL/SelectQuery.png)
 
 8. Created a `DELETE` query to remove the entry for Andrew:
 
@@ -60,7 +60,7 @@ In this bootcamp project, I deployed a container set and managed the database.
     - Then re-run the `SELECT *` query to see the new `employees` table:
 
 1       `SELECT * FROM employees;`
-![DeleteQuery.png](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Images/SQL/DeleteQuery.png)
+![DeleteQuery.png](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/SQL/DeleteQuery.png)
    
 
       

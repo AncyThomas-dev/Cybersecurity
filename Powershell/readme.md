@@ -61,7 +61,8 @@ New-AzVM -VM $vm -ResourceGroupName PurpleTeamRG -Location Eastus2
 
 ```
 
-![](https://github.com/AncyThomas-dev/WilldanInterview/tree/main/Powershell/Images)
+![](https://github.com/AncyThomas-dev/Cybersecurity/tree/main/Powershell/Images)
+
 
 
 

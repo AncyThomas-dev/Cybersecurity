@@ -13,15 +13,15 @@ The main features of Azure Security Center include:
 
 #### Here is the screenshot of the Security Score of all the resources I have created in Azure
 
-![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure%20Security%20Center/Images/AzureSecurityScore.png)
+![](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure%20Security%20Center/Images/AzureSecurityScore.png)
 
 #### Recommendations to improve Security Score
 
-![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure%20Security%20Center/Images/Recommendations.png)
+![](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure%20Security%20Center/Images/Recommendations.png)
 
 #### Remediations I tried to improve the Security Score
 
-![](https://github.com/AncyThomas-dev/WilldanInterview/blob/main/Azure%20Security%20Center/Images/Remediations.png)
+![](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure%20Security%20Center/Images/Remediations.png)
 
 I was not able to improve the securtiy score of due to the limitations with my subscription.
 
