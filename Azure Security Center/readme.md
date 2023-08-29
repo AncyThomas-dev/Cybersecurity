@@ -23,7 +23,5 @@ The main features of Azure Security Center include:
 
 ![](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure%20Security%20Center/Images/Remediations.png)
 
-I was not able to improve the securtiy score of due to the limitations with my subscription.
-
-From what I have read, to improve your secure score, you have to implement the security recommendations for your environment. 
-
+I was able to improve the security score to 64% by implementing the recommendations
+![]( https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure%20Cloud%20Infrastructure/Images/ImprovedSecurityScore.png)
