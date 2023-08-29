@@ -11,12 +11,12 @@ A repository of some of my cybersecurity projects
 
 ## Project 1
 
-### [Azure cloud infrastructure and Azure Web App](https://github.com/AncyThomas-dev/ Cybersecurity/tree/main/Azure)
+### Azure cloud infrastructure and Azure Web App (https://github.com/AncyThomas-dev/Cybersecurity/tree/main/Azure%20Cloud%20Infrastructure)
 
 ## Project 2
 
-### [Database Management mini project](https://github.com/AncyThomas-dev/ Cybersecurity/tree/main/Database%20Management)
+### Database Management mini project (https://github.com/AncyThomas-dev/Cybersecurity/tree/main/Database%20Management)
 
 ## Project 3
 
-### [Deploying an Azure VM using Powershell](https://github.com/AncyThomas-dev/ Cybersecurity/tree/main/Powershell)
+### Deploying an Azure VM using Powershell (https://github.com/AncyThomas-dev/Cybersecurity/tree/main/Powershell)
