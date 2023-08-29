@@ -2,7 +2,7 @@
 
 ### Thank you for making time to speak with me today.
 
-![] ( https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/FPCU/Fpculogo.jpeg)
+![]( https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/FPCU/Fpculogo.jpeg)
 
 
 A repository of some of my cybersecurity projects
