@@ -13,7 +13,7 @@ I used the following steps to set up cloud resources in Azure
 - Web app
 - WAF rules
 
-![](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Azure/Images/Azure%20Resource%20Group/ResourceGroupFinal.png)
+![](https://github.com/AncyThomas-dev/Azure Cloud Infrastructure/Images/Azure Resource Group/ResourceGroupFinal.png)
 
 ---
 
