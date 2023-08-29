@@ -1,5 +1,10 @@
 # Ancy Thomas 
 
+### Thank you for making time to speak with me today.
+
+![] ( https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Images/FPCU/Fpculogo.jpeg)
+
+
 A repository of some of my cybersecurity projects
 
 ### You can view a copy of my resume [HERE](https://github.com/AncyThomas-dev/Cybersecurity/blob/main/Ancy_Thomas_Resume.pdf)
